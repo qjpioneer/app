@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  
 
-  get 'root/home'
-
+  #get 'sessions/new'
   resources :users
+  resource :session, only: [ :new, :create, :destroy ]
+  get '/sandbox', to: 'root#sandbox' if Rails.env.development?
+  root to: 'root#home' # This maps '/' to the root#home action
+
+
   #map / to root#Home
-  root to:'root#home'
-  # The priority is based upon order of creation: first created -> highest priority.
+    # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

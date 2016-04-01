@@ -1,0 +1,9 @@
+class User < ActiveRecord::Base
+	before_save {self.email} = email.downcase} #儲存前,呼叫自己變成小寫 ,不過方法不好,請看p.84
+	before_save {self.session_token ||= Digest::SHA1.hexdigest(secureRandom.urlsafe_base64.to_s)}#如果有值就保留，沒有就新增加等號"="之後得值
+
+	has_secure_password #加入密碼（加密）
+	validates:name, presence:true, length:{maximum:30} #認證名字 ,必須欄位 ,長度限制
+	validates:email,format:{with:/\A[^@]+@[^@]+\z/} ,uniqueness:true #認證email格式 ,唯一的
+end
+

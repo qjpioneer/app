@@ -16,18 +16,26 @@
 		</div>
 	</div>
 </header>
+
+
 <!-- Content wrapped in container -->
 <div class="container">
-	<%=yield %>
-  <!-- footer -->
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>  
+  <%= yield %>
+  <!-- New footer -->
   <footer class="footer">
-  	
-  		<a href="qjpioneer.com">QJPioneer</a>
-  	
+    <small>
+      <a href="http://codecamp.io">程式開發工作營</a>
+    </small>
+    <br>
   </footer>
-<!-- debugging -->  
-	<%= debug(params)if Rails.env.development? %>
+  <!-- Debugging footer -->
+  <%= content_tag :div, debug(params) if Rails.env.development? %>
 </div>
+
+
 
 </body>
 </html>

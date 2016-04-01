@@ -103,4 +103,18 @@ footer ul li {
   margin-left: 10px;
 }
 
+/* forms */
+/* div id 為 error_explanation  */
+
+#error_explanation {
+  color: #f00;
+  ur{
+  margin-right: 18px;
+  }
+}
+/*   error
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+} */
 
